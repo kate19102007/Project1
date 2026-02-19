@@ -1,0 +1,3 @@
+Top Left: 42, Bottom Right: 15, Area: 9
+Top Left: 36, Bottom Right: 42, Area: 4
+Top Left: 49, Bottom Right: 46, Area: 0
