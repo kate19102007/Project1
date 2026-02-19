@@ -1,20 +1,42 @@
-// project21.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+#include "Header.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int n;
+	cout << "Enter the number: ";
+	cin >> n;
+
+	Rectangle** rectangles = new Rectangle * [n];
+
+	for (int i = 0; i < n; i++) {
+		cout << "Enter rectangle: " << i + 1 << ":" << endl;
+		rectangles[i] = new Rectangle();
+		rectangles[i]->input();
+	}
+
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n - i - 1; j++) {
+			if (rectangles[j]->area() < rectangles[j + 1]->area()) {
+				Rectangle* temp = rectangles[j];
+				rectangles[j] = rectangles[j + 1];
+				rectangles[j + 1] = temp;
+			}
+		}
+	}
+
+	ofstream fout("TextFile1.txt");
+	for (int i = 0; i < n; i++) {
+		fout << *rectangles[i] << endl;
+	}
+	fout.close();
+
+	cout << "\nRectangles sorted by area:" << endl;
+	for (int i = 0; i < n; i++) {
+		rectangles[i]->print();
+		delete rectangles[i];
+	}
+	delete[] rectangles;
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
