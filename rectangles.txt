@@ -1,1 +1,3 @@
-3 4 7 8 Area 16
+Top Left: (0, 6), Bottom Right: (3, 1), Area: 15
+Top Left: (1, 5), Bottom Right: (4, 2), Area: 9
+Top Left: (2, 7), Bottom Right: (5, 4), Area: 9

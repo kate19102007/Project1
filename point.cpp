@@ -1,34 +1,41 @@
 #include "point.h"
 
-point::point()
+Point::Point()
 {
-	x = 0;
-	y = 0;
+	x = 0.0;
+	y = 0.0;
+
 }
 
-point::point(double x1, double y1)
+void Point::input()
 {
-	x = x1;
-	y = y1;
+	cin >> x >> y;
 }
 
-void point::input()
+void Point::output() const
 {
-	cout << "Enter x: "; cin >> x;
-	cout << "Enter y: "; cin >> y;
+	cout << "(" << x << ", " << y << ")";
 }
 
-void point::output() const
-{
-	cout << "( " << x << ", " << y << " )";
-}
-
-double point::getx() const
+double Point::getX() const
 {
 	return x;
+
 }
 
-double point::gety() const
+double Point::getY() const
 {
 	return y;
+}
+
+ostream& operator<<(ostream& os, const Point& p)
+{
+	os << "(" << p.getX() << ", " << p.getY() << ")";
+	return os;
+}
+
+fstream& operator>>(fstream& in, Point& p)
+{
+	in >> p.x >> p.y;	
+	return in;
 }

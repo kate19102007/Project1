@@ -1,17 +1,19 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include <cmath>
 using namespace std;
-class point {
+
+class Point {
 private:
-	double x;
-	double y;
+    double x, y;
 public:
-	point();
-	point(double, double);
-	double getx()const;
-	double gety()const;
-	void input();
-	void output() const;
+    Point();
+    void input();
+    void output() const;
+
+    double getX() const;
+    double getY() const;
+
+    friend ostream& operator<<(ostream& os, const Point& p);
+    friend fstream& operator>>(fstream& in, Point& p);
 };
